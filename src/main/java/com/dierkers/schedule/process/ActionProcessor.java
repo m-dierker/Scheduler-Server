@@ -9,6 +9,7 @@ import com.dierkers.schedule.ScheduleServer;
 import com.dierkers.schedule.action.Action;
 import com.dierkers.schedule.action.ActionType;
 import com.dierkers.schedule.action.ErrorPrint;
+import com.dierkers.schedule.action.FacebookMessage;
 
 @SuppressWarnings("rawtypes")
 public class ActionProcessor implements Runnable {
@@ -24,9 +25,9 @@ public class ActionProcessor implements Runnable {
 
 		// Add actions here
 		actionMap.put(ActionType.ERROR_PRINT, ErrorPrint.class);
+		actionMap.put(ActionType.FACEBOOK_MESSAGE, FacebookMessage.class);
 	}
 
-	@Override
 	public void run() {
 		while (true) {
 
