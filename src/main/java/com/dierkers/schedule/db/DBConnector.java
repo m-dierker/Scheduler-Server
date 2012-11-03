@@ -37,11 +37,15 @@ public class DBConnector {
 	}
 
 	private static Connection getConnection() throws URISyntaxException, SQLException {
-		URI dbUri = new URI(System.getenv("DATABASE_URL"));
+		String dbUriString = System.getenv("DATABASE_URL");
+
+		URI dbUri = new URI(dbUriString);
 
 		String username = dbUri.getUserInfo().split(":")[0];
 		String password = dbUri.getUserInfo().split(":")[1];
-		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + "/" + dbUri.getPort();
+		String postfix = System.getenv("DATABASE_POSTFIX");
+		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + "/"
+				+ dbUriString.substring(dbUriString.lastIndexOf("/") + 1) + (postfix == null ? "" : "/?" + postfix);
 
 		return DriverManager.getConnection(dbUrl, username, password);
 	}
