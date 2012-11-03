@@ -74,6 +74,10 @@ public class ScheduleAPIAdd extends HttpServlet {
 			parametersToCopy.add("to");
 			parametersToCopy.add("msg");
 			break;
+		case ActionType.MAIL:
+			parametersToCopy.add("to");
+			parametersToCopy.add("subj");
+			parametersToCopy.add("msg");
 		default:
 			resp.getWriter().println("Invalid type in switch");
 			return;
