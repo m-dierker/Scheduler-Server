@@ -90,7 +90,14 @@ public class ScheduleAPIAdd extends HttpServlet {
 			}
 		}
 
-		int time = 1351913467;
+		int time;
+		String timeString;
+		if ((timeString = req.getParameter("time")) != null) {
+			time = Integer.valueOf(timeString);
+		} else {
+			time = 1351913467;
+			System.err.println("No time specified, using default time which means execution *now*");
+		}
 
 		ss.db().update("INSERT INTO schedules (id, type, owner, time, data, processed) VALUES ('" + randomUUID()
 				+ "', " + type + ",'" + owner + "', " + time + ", '" + obj.toString() + "', 'f')");
