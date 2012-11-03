@@ -45,7 +45,7 @@ public class ActionProcessor implements Runnable {
 							continue;
 						}
 
-						long currentTime = System.currentTimeMillis();
+						long currentTime = System.currentTimeMillis() / 1000;
 						long processTime = rs.getInt("time");
 
 						if (processTime > currentTime) {
