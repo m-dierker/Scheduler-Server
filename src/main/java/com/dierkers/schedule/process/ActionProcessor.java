@@ -48,6 +48,8 @@ public class ActionProcessor implements Runnable {
 						long currentTime = System.currentTimeMillis() / 1000;
 						long processTime = rs.getInt("time");
 
+						System.out.println(processTime - currentTime);
+
 						if (processTime > currentTime) {
 							// The time is still greater than when we should
 							// process it
