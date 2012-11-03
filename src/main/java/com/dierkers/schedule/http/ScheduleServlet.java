@@ -15,6 +15,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 import com.dierkers.schedule.ScheduleServer;
+import com.dierkers.schedule.api.ScheduleAPIAdd;
 
 /**
  * main servlet manager
@@ -54,6 +55,7 @@ public class ScheduleServlet extends HttpServlet implements Runnable {
 		context.setContextPath("/");
 		server.setHandler(context);
 		context.addServlet(new ServletHolder(this), "/*");
+		context.addServlet(new ServletHolder(new ScheduleAPIAdd(ss)), "/add/*");
 	}
 
 	public void run() {

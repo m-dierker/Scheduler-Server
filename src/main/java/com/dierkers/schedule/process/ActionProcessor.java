@@ -8,6 +8,7 @@ import java.util.HashMap;
 import com.dierkers.schedule.ScheduleServer;
 import com.dierkers.schedule.action.Action;
 import com.dierkers.schedule.action.ActionType;
+import com.dierkers.schedule.action.Call;
 import com.dierkers.schedule.action.ErrorPrint;
 import com.dierkers.schedule.action.FacebookMessage;
 import com.dierkers.schedule.action.SMS;
@@ -28,6 +29,7 @@ public class ActionProcessor implements Runnable {
 		actionMap.put(ActionType.ERROR_PRINT, ErrorPrint.class);
 		actionMap.put(ActionType.FACEBOOK_MESSAGE, FacebookMessage.class);
 		actionMap.put(ActionType.SMS, SMS.class);
+		actionMap.put(ActionType.CALL, Call.class);
 	}
 
 	public void run() {
@@ -61,8 +63,9 @@ public class ActionProcessor implements Runnable {
 
 						System.err.println("Processing action ID " + id);
 
-						if (!this.actionMap.containsKey(type)) {
-							// Invalid ID type
+						if (!this.actionMap.containsKey(type) || owner == null || owner.equals("null")
+								|| owner.trim().equals("")) {
+							// Invalid ID type or no owner
 							continue;
 						}
 

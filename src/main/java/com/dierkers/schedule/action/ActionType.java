@@ -4,4 +4,5 @@ public class ActionType {
 	public final static int ERROR_PRINT = 1;
 	public final static int FACEBOOK_MESSAGE = 2;
 	public final static int SMS = 3;
+	public final static int CALL = 4;
 }

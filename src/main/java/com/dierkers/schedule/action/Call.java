@@ -9,20 +9,19 @@ import java.util.Scanner;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SMS extends Action {
+public class Call extends Action {
 
-	public SMS(String owner, String data) {
+	public Call(String owner, String data) {
 		super(owner, data);
 	}
 
 	@Override
 	public int getID() {
-		return ActionType.SMS;
+		return ActionType.CALL;
 	}
 
 	@Override
 	public void process() {
-
 		JSONObject obj;
 		try {
 			obj = new JSONObject(this.getData());
@@ -30,7 +29,7 @@ public class SMS extends Action {
 			String to = obj.getString("to");
 			String msg = obj.getString("msg").replace(" ", "+");
 
-			Scanner in = new Scanner(new URI("http://api.tropo.com/1.0/sessions?action=create&token=18aea8471ca47847abbef040d5cc1c14d1684ac3e094c0a7cd95249c5ff8d722489de69cfdb2af56068fe25a&to="
+			Scanner in = new Scanner(new URI("http://api.tropo.com/1.0/sessions?action=create&token=0b79745120c8f0488d10384ff14343e86dfe6d862e2706a5b59e60bc8ab09c37efc3996dd96ddfb6fd7cb35d&to="
 					+ to + "&msg=" + msg).toURL().openStream());
 
 			in.close();
@@ -48,6 +47,6 @@ public class SMS extends Action {
 			System.err.println("Error sending SMS (URI syntax)");
 			e.printStackTrace();
 		}
-
 	}
+
 }
