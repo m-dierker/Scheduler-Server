@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class URLConn {
 	public static String getPage(String url) {
 		Scanner in;
+		url = url.replace(" ", "%20");
+		System.out.println(url);
 		String response = "";
 		try {
 			in = new Scanner(new URI(url).toURL().openStream());
