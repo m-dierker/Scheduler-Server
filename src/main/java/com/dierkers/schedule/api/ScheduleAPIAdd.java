@@ -45,7 +45,7 @@ public class ScheduleAPIAdd extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		if (owner == null || owner.trim().equals("") || !owner.equals("1105870286")) {
+		if (owner == null || owner.trim().equals("")) {
 			resp.getWriter().println("Invalid access token");
 			return;
 		}
