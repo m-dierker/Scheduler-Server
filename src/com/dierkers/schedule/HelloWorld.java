@@ -23,6 +23,7 @@ public class HelloWorld extends HttpServlet {
 	public static void main(String[] args) throws Exception {
 		String port = System.getenv("PORT");
 		Server server = new Server(port != null ? Integer.valueOf(port) : 5000);
+
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		context.setContextPath("/");
 		server.setHandler(context);
