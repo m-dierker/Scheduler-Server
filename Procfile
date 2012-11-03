@@ -1,1 +1,1 @@
-web:    java -cp "target/classes/:target/dependency/*" com.dierkers.schedule.HelloWorld
+web:    java -cp target/classes/:target/dependency/* com.dierkers.schedule.HelloWorld
