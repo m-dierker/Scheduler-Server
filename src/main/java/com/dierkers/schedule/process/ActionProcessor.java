@@ -59,6 +59,11 @@ public class ActionProcessor implements Runnable {
 
 						System.err.println("Processing action ID " + id);
 
+						if (!this.actionMap.containsKey(type)) {
+							// Invalid ID type
+							continue;
+						}
+
 						Class actionClass = this.getActionForType(type);
 						Action action = (Action) actionClass.getConstructors()[0].newInstance(owner, data);
 
