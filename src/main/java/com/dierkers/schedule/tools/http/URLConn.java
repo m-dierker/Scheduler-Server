@@ -1,13 +1,14 @@
 package com.dierkers.schedule.tools.http;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Scanner;
 
 public class URLConn {
-	public static String getPage(String url) {
+	public static String getPage(String url){
 		Scanner in;
 		url = url.replace(" ", "%20");
 		System.out.println(url);
