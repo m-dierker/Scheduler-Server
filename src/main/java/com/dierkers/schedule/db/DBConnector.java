@@ -36,7 +36,9 @@ public class DBConnector {
 	}
 
 	public ResultSet query(String query) {
-		System.out.println("Executing Query " + query);
+		if (System.getenv("DEBUG").equals("1")) {
+			System.out.println("Executing Query " + query);
+		}
 		try {
 			stmt = con.createStatement();
 			return stmt.executeQuery(query);
