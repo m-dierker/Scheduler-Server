@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.dierkers.schedule.constants.Constants;
+
 public class DBConnector {
 	private Connection con;
 	private Statement stmt;
@@ -36,7 +38,7 @@ public class DBConnector {
 	}
 
 	public ResultSet query(String query) {
-		if (System.getenv("DEBUG").equals("1")) {
+		if (Constants.isDebug()) {
 			System.out.println("Executing Query " + query);
 		}
 		try {
