@@ -25,7 +25,6 @@ public class DBConnector {
 			System.err.println("SQLException connecting to the DB");
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
