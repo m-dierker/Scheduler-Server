@@ -38,7 +38,13 @@ public class ActionProcessor implements Runnable {
 						long currentTime = System.currentTimeMillis() / 1000;
 						long processTime = rs.getInt("time");
 
-						System.out.println(processTime - currentTime);
+						String id = rs.getString("id");
+						int type = rs.getInt("type");
+						String owner = rs.getString("owner");
+						String data = rs.getString("data");
+
+						System.out.println("Checking about action ID " + id + ", and it will be executed in "
+								+ (processTime - currentTime));
 
 						if (processTime > currentTime) {
 							// The time is still greater than when we should
@@ -47,11 +53,6 @@ public class ActionProcessor implements Runnable {
 						}
 
 						// Process the event
-
-						String id = rs.getString("id");
-						int type = rs.getInt("type");
-						String owner = rs.getString("owner");
-						String data = rs.getString("data");
 
 						System.err.println("Processing action ID " + id);
 
