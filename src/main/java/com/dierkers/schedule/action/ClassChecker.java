@@ -53,11 +53,7 @@ public class ClassChecker extends Action {
 		WebElement passwordField = driver.findElement(By.name("password"));
 		passwordField.sendKeys(passwordString);
 
-		System.out.println(usernameString + " " + passwordString);
-
 		passwordField.submit();
-
-		System.out.println(driver.getPageSource());
 
 		clickLinkWithText(driver, "Registration & Records");
 		driver.findElements(By.partialLinkText("Registration")).get(1).click();
