@@ -83,8 +83,10 @@ public class ScheduleAPIAdd extends HttpServlet {
 		case ActionType.CLASS_CHECKER:
 			parametersToCopy.add("username");
 			parametersToCopy.add("password");
+			parametersToCopy.add("to");
+			break;
 		default:
-			resp.getWriter().println("Invalid type in switch");
+			resp.getWriter().println("Invalid type in switch. Add to ScheduleAPIAdd, or if it's there, remember to put a break statement.");
 			return;
 		}
 
