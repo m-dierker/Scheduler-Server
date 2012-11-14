@@ -20,7 +20,7 @@ public class Mail extends Action {
 
 		JSONObject obj;
 		try {
-			obj = new JSONObject(this.getData());
+			obj = getJSONObject();
 
 			String to = obj.getString("to");
 			String msg = obj.getString("msg");

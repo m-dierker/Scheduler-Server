@@ -8,11 +8,6 @@ import java.util.HashMap;
 import com.dierkers.schedule.ScheduleServer;
 import com.dierkers.schedule.action.Action;
 import com.dierkers.schedule.action.ActionType;
-import com.dierkers.schedule.action.Call;
-import com.dierkers.schedule.action.ErrorPrint;
-import com.dierkers.schedule.action.FacebookMessage;
-import com.dierkers.schedule.action.Mail;
-import com.dierkers.schedule.action.SMS;
 
 @SuppressWarnings("rawtypes")
 public class ActionProcessor implements Runnable {
@@ -24,14 +19,7 @@ public class ActionProcessor implements Runnable {
 	public ActionProcessor(ScheduleServer ss) {
 		this.ss = ss;
 
-		actionMap = new HashMap<Integer, Class>();
-
-		// Add actions here
-		actionMap.put(ActionType.ERROR_PRINT, ErrorPrint.class);
-		actionMap.put(ActionType.FACEBOOK_MESSAGE, FacebookMessage.class);
-		actionMap.put(ActionType.SMS, SMS.class);
-		actionMap.put(ActionType.CALL, Call.class);
-		actionMap.put(ActionType.MAIL, Mail.class);
+		actionMap = ActionType.getActionMap();
 	}
 
 	public void run() {

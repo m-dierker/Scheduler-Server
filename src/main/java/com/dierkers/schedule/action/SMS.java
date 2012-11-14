@@ -1,13 +1,9 @@
 package com.dierkers.schedule.action;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Scanner;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.dierkers.schedule.tools.http.URLConn;
 
 public class SMS extends Action {
 
@@ -30,22 +26,11 @@ public class SMS extends Action {
 			String to = obj.getString("to");
 			String msg = obj.getString("msg").replace(" ", "+");
 
-			Scanner in = new Scanner(new URI("http://api.tropo.com/1.0/sessions?action=create&token=18aea8471ca47847abbef040d5cc1c14d1684ac3e094c0a7cd95249c5ff8d722489de69cfdb2af56068fe25a&to="
-					+ to + "&msg=" + msg).toURL().openStream());
-
-			in.close();
+			URLConn.getPage("http://api.tropo.com/1.0/sessions?action=create&token=18aea8471ca47847abbef040d5cc1c14d1684ac3e094c0a7cd95249c5ff8d722489de69cfdb2af56068fe25a&to="
+					+ to + "&msg=" + msg);
 
 		} catch (JSONException e) {
 			System.err.println("Error sending message on Action ID " + getID());
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			System.err.println("Error sending SMS (malformed URL)");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.err.println("Error sending SMS (IOException)");
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			System.err.println("Error sending SMS (URI syntax)");
 			e.printStackTrace();
 		}
 

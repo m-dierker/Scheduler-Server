@@ -29,6 +29,7 @@ public class ScheduleAPIAdd extends HttpServlet {
 
 		// Check owner
 		String accessToken = req.getParameter("access_token");
+
 		if (accessToken == null || accessToken.trim().equals("") || accessToken.contains("&")) {
 			resp.getWriter().println("Access token needed");
 			return;
@@ -79,6 +80,9 @@ public class ScheduleAPIAdd extends HttpServlet {
 			parametersToCopy.add("subj");
 			parametersToCopy.add("msg");
 			break;
+		case ActionType.CLASS_CHECKER:
+			parametersToCopy.add("username");
+			parametersToCopy.add("password");
 		default:
 			resp.getWriter().println("Invalid type in switch");
 			return;
