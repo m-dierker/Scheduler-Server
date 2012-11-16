@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import com.dierkers.schedule.tools.http.URLConn;
+import com.dierkers.schedule.sms.SMSSender;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 public class ClassChecker extends Action {
@@ -118,8 +118,7 @@ public class ClassChecker extends Action {
 
 		String msg = "Ethics is now open! - Spots Remaining: " + rem;
 		if (rem > 0) {
-			URLConn.getPage("http://api.tropo.com/1.0/sessions?action=create&token=18aea8471ca47847abbef040d5cc1c14d1684ac3e094c0a7cd95249c5ff8d722489de69cfdb2af56068fe25a&to="
-					+ to + "&msg=" + msg);
+			SMSSender.sendMsg(to, msg);
 		}
 
 	}
