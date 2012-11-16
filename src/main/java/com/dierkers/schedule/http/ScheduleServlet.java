@@ -29,6 +29,11 @@ public class ScheduleServlet extends HttpServlet implements Runnable {
 	private ScheduleServer ss;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		if (req.getRequestURI().contains("/favicon.ico")) {
+			return;
+		}
+
 		resp.setContentType("text/html;charset=utf-8");
 
 		resp.getWriter().print("<h2>Hello from Java!</h2>\n");
