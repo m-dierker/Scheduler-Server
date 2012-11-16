@@ -110,8 +110,10 @@ public class ScheduleAPIAdd extends HttpServlet {
 			System.err.println("No time specified, using default time which means execution *now*");
 		}
 
+		// Need to fix the SQL bug here.
+
 		ss.db().update("INSERT INTO schedules (id, type, owner, time, data, processed) VALUES ('" + randomUUID()
-				+ "', " + type + ",'" + owner + "', " + time + ", '" + obj.toString() + "', 'f')");
+				+ "', " + type + ",'" + owner + "', " + time + ", '" + obj.toString().replace("'", "\'") + "', 'f')");
 
 	}
 

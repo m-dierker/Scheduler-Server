@@ -2,8 +2,6 @@ package com.dierkers.schedule.http;
 
 import java.io.IOException;
 import java.net.BindException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,17 +36,18 @@ public class ScheduleServlet extends HttpServlet implements Runnable {
 
 		resp.getWriter().print("<h2>Hello from Java!</h2>\n");
 
-		ResultSet rs = ss.db().fquery("SELECT id, type, owner, time, data");
-		try {
-			while (rs.next()) {
-				resp.getWriter().print("ID: " + rs.getString("id") + ", Type: " + rs.getInt("type") + ", " + "Owner: "
-						+ rs.getString("owner") + ", Time: " + rs.getInt("time") + ", Data: " + rs.getString("data")
-						+ "<br>\n");
-			}
-		} catch (SQLException e) {
-			System.err.println("Error generating the page");
-			e.printStackTrace();
-		}
+		// Removed so it stops showing everything in the DB :P
+//		ResultSet rs = ss.db().fquery("SELECT id, type, owner, time, data");
+//		try {
+//			while (rs.next()) {
+//				resp.getWriter().print("ID: " + rs.getString("id") + ", Type: " + rs.getInt("type") + ", " + "Owner: "
+//						+ rs.getString("owner") + ", Time: " + rs.getInt("time") + ", Data: " + rs.getString("data")
+//						+ "<br>\n");
+//			}
+//		} catch (SQLException e) {
+//			System.err.println("Error generating the page");
+//			e.printStackTrace();
+//		}
 	}
 
 	public ScheduleServlet(ScheduleServer ss) {
