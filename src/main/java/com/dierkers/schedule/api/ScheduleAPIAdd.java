@@ -113,7 +113,7 @@ public class ScheduleAPIAdd extends HttpServlet {
 		// Need to fix the SQL bug here.
 
 		ss.db().update("INSERT INTO schedules (id, type, owner, time, data, processed) VALUES ('" + randomUUID()
-				+ "', " + type + ",'" + owner + "', " + time + ", '" + obj.toString().replace("'", "\'") + "', 'f')");
+				+ "', " + type + ",'" + owner + "', " + time + ", '" + obj.toString().replace("'", "\\'") + "', 'f')");
 
 	}
 
